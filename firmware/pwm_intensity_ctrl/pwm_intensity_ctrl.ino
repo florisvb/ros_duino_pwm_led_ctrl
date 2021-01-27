@@ -11,7 +11,7 @@ int Intensity;
 int Freq;
 
 //This is initializing the boards all will follow this patter and need to be soldered to make them unique
-Adafruit_PWMServoDriver pwm1 = Adafruit_PWMServoDriver(0x41);
+Adafruit_PWMServoDriver pwm0 = Adafruit_PWMServoDriver(0x40);
 //Adafruit_PWMServoDriver pwm2 = Adafruit_PWMServoDriver(0x41);
 //Adafruit_PWMServoDriver pwm3 = Adafruit_PWMServoDriver(0x42);
 
@@ -40,8 +40,8 @@ void setup() {
   Serial.begin(57600);
 
   //  seting up all boards. needs to be done if more boards are added
-  pwm1.begin();
-  pwm1.setPWMFreq(Freq);  // 1600 is the max, use lower value to prevent "singing"
+  pwm0.begin();
+  pwm0.setPWMFreq(Freq);  // 1600 is the max, use lower value to prevent "singing"
  
   //pwm2.begin();
   //pwm2.setPWMFreq(Freq);
@@ -64,8 +64,8 @@ void loop() {
 
 //    this is the structure for how to send the signal to one board
 //Example
-//    pwm1.setPWM(2,0,Intensity*40.95);
-//    pwm1---> board 1
+//    pwm0.setPWM(2,0,Intensity*40.95);
+//    pwm0---> board 1
 //    2---> pin 2
 //    0---> always zero
 //    Intensity---> PWM frequency from 0 to 100
@@ -74,7 +74,7 @@ void loop() {
 // control everything together
 if (Mode == -1){
   for (int pin=0; pin<16; pin++){
-    pwm1.setPWM(pin,0,Intensity*40.95);
+    pwm0.setPWM(pin,0,Intensity*40.95);
     //pwm2.setPWM(pin,0,Intensity*40.95);
     //pwm3.setPWM(pin,0,Intensity*40.95);
   }
@@ -82,7 +82,7 @@ if (Mode == -1){
 
 // control individual LEDs
 else if (Mode >= 0 and Mode < 16) {
-  pwm1.setPWM(Mode,0,Intensity*40.95);
+  pwm0.setPWM(Mode,0,Intensity*40.95);
 }
 
 
