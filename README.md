@@ -16,6 +16,19 @@ Load the firmware `ros_duino_pwm_led_ctrl/firmware/pwm_intensity_ctrl/pwm_intens
 
 After downloading this package into `~/catkin_ws/src` (or whatever your catkin workspace is called), run `catkin_make` from `~/catkin_ws`.
 
+# Udev Rules
+
+You may wish to use a custom rule tied to the serial number of your arduino. For that, follow this guide:
+https://github.com/florisvb/data_tutorials/blob/master/UdevRules/creating_a_udev_rule.md
+
+# Setting up the wiring connections
+
+Make the following connections between the pwm controller board and the arduino mega:
+1. pwmctrl grnd: mega grnd
+2. pwmtrl vcc: mega 5V
+3. pwmctrl SDL: mega SDL
+4. pwmctrl SDA: mega SDA
+
 # Controlling the LEDs
 
 1. Make sure `roscore` is running
