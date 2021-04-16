@@ -35,6 +35,11 @@ class PWM_Intensity_Ctrl(object):
         msg.data=[mode,0]
         # while not rospy.is_shutdown():
         self.publisher.publish(msg)
+    def set_pwm_blink(self, intensity, duration, frame):
+        mode =-2
+        msg = Int32MultiArray()
+        msg.data =[mode, intensity, duration, frame]
+        self.publisher.publish(msg)
 
 
 
